@@ -1,3 +1,4 @@
+import time
 
 print("TASK 1_____________________________________________________________________________________\n")
 
@@ -6,8 +7,9 @@ print("TASK 1___________________________________________________________________
 і повертати словник із кількістю монет кожного номіналу, 
 що використовуються для формування цієї суми. """
 
+
 coins = [50, 25, 10, 5, 2, 1]
-final_sum = 113
+final_sum = 11466
 
 def find_coins_greedy(user_list, needed_result):
     sorted_list = sorted(user_list, reverse=True)
@@ -25,13 +27,14 @@ def find_coins_greedy(user_list, needed_result):
                 break
     return change_dic, needed_result_sum
 
+start = time.time()
 print(find_coins_greedy(coins,final_sum))
+print(f"Timsort: {time.time() - start:.4f} сек")
 
 print("\nTASK 1 recursion __________________________________________________________________________\n")
 
-
 coins = [50, 25, 10, 5, 2, 1]
-final_sum = 114
+final_sum = 11466
 
 def find_coins_greedy_rec(user_list, needed_result, change_dic):
     if change_dic is None:
@@ -52,8 +55,9 @@ def find_coins_greedy_rec(user_list, needed_result, change_dic):
                 change_dic[coin] = 1
             return(find_coins_greedy_rec(user_list, needed_result-coin, change_dic))
     return change_dic   
-
+start = time.time()
 print(find_coins_greedy_rec(coins,final_sum, None))         
+print(f"Timsort: {time.time() - start:.4f} сек")
     
 print("\nTASK 2_____________________________________________________________________________________\n")
 """Функція динамічного програмування find_min_coins.
@@ -91,4 +95,6 @@ def find_min_coins(coins_list, needed_sum):
         current_sum =  current_sum - coin
     return result
 
+start = time.time()
 print(find_min_coins(coins, final_sum))
+print(f"Timsort: {time.time() - start:.4f} сек")
